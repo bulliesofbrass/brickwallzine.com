@@ -1,0 +1,30 @@
+{
+	"files.exclude": {
+		"**/.astro": false,
+		"**/.vscode": false,
+		"**/dist": false,
+		"**/node_modules": false
+	},
+
+	"cSpell.language": "en-GB",
+	"cSpell.languageSettings": [
+		{
+			"languageId": "*",
+			"enabled": false
+		},
+		{
+			"languageId": "markdown",
+			"enabled": true
+		},
+		{
+			"languageId": "mdx",
+			"enabled": true
+		}
+	],
+
+	"markdownlint.config": {
+		"MD007": {
+			"indent": 4
+		}
+	}
+}
