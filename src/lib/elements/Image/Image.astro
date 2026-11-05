@@ -3,12 +3,14 @@ import { Picture } from 'astro:assets';
 
 interface Props {
 	class?: string;
+	style?: astroHTML.JSX.HTMLAttributes['style'];
 	alt?: string;
 	src: ImageMetadata;
 }
 
 const {
 	class: className,
+	style,
 	alt = "",
 	src,
 	...rest
@@ -17,11 +19,10 @@ const {
 
 <Picture
 	class:list={["picture", className]}
+	style={style}
 	alt={alt}
 	src={src}
 	layout="constrained"
-	height="1080"
-	width="1920"
 	formats={["webp"]}
 	{...rest}
 />

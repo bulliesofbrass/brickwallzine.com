@@ -1,0 +1,68 @@
+---
+import { Image } from "#lib/elements";
+import scarlit from "./scarlet.jpg";
+import kalypso from "./kalypso.png";
+
+interface Props {
+	class?: string;
+}
+
+const {
+	class: className,
+	...rest
+} = Astro.props;
+---
+
+<div id="polaroids" class:list={[className]} {...rest}>
+	<div class="polaroid">
+		<div class="image">
+			<Image src={scarlit} style="height: 100%; width: auto; max-width: none;" />
+		</div>
+	</div>
+
+	<div class="polaroid">
+		<div class="image">
+			<Image src={kalypso} style="object-fit: contain; height: 100%; width: 100%;"/>
+		</div>
+	</div>
+</div>
+
+<style>
+	#polaroids {
+		--polaroid-height: 368px;
+		--polaroid-width: 300px;
+
+		width: 100%;
+
+		position: absolute;
+		top: calc(var(--polaroid-height) / -2 * 1.5);
+		z-index: 100;
+
+		display: flex;
+		justify-content: end;
+		gap: 15px;
+
+		padding: 30px;
+		box-sizing: border-box;
+	}
+
+	.polaroid {
+		height: var(--polaroid-height);
+		width: var(--polaroid-width);
+
+		padding: 15px;
+		box-sizing: border-box;
+
+		background-color: white;
+	}
+
+	.image {
+		height: auto;
+		width: 100%;
+		aspect-ratio: 1/1;
+		background: black;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+	}
+</style>

@@ -1,6 +1,6 @@
 ---
 import { Body, Image } from "#lib/elements";
-import { Navigation, IMG_0751 } from "#lib/assets/index";
+import { Polaroids, Navigation, IMG_0751 } from "#lib/assets/index";
 
 const SITE_TITLE = "BRICK WALL MAGAZINE";
 const SITE_DESCRIPTION = "";
@@ -11,6 +11,10 @@ const SITE_DESCRIPTION = "";
 		<Image class="welcome-desktop" src={IMG_0751} />
 		<Navigation />
 	</header>
+
+	<main>
+		<Polaroids />
+	</main>
 </Body>
 
 <style>
@@ -24,5 +28,10 @@ const SITE_DESCRIPTION = "";
 		position: absolute;
 		object-fit: cover;
 		z-index: 1;
+	}
+
+	main {
+		position: relative;
+		height: 100svh;
 	}
 </style>
