@@ -2,22 +2,33 @@
 import { Picture } from 'astro:assets';
 
 interface Props {
+	class?: string;
 	alt?: string;
 	src: ImageMetadata;
 }
 
 const {
+	class: className,
 	alt = "",
-	src
+	src,
+	...rest
 } = Astro.props;
 ---
 
 <Picture
+	class:list={["picture", className]}
 	alt={alt}
 	src={src}
-	style="height: 100%; width: 100%;"
 	layout="constrained"
 	height="1080"
 	width="1920"
 	formats={["webp"]}
+	{...rest}
 />
+
+<style>
+	.picture {
+		height: 100%;
+		width: 100%;
+	}
+</style>

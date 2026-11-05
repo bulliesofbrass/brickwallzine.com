@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "imports": {
+	"#lib/assets/index": "./src/lib/assets/index/index.ts",
     "#lib/components": "./src/lib/components/index.ts",
     "#lib/elements": "./src/lib/elements/index.ts",
     "#lib/*": "./src/lib/*"

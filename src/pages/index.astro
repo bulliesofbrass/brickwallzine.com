@@ -1,5 +1,6 @@
 ---
-import { Body } from "#lib/elements";
+import { Body, Image } from "#lib/elements";
+import { IMG_0751 } from "#lib/assets/index";
 
 const SITE_TITLE = "BRICK WALL MAGAZINE";
 const SITE_DESCRIPTION = "";
@@ -10,6 +11,20 @@ const SITE_DESCRIPTION = "";
 	</header>
 
 	<main>
-		<h1>BRICK WALL MAGAZINE</h1>
+		<Image class="welcome-desktop" src={IMG_0751} />
 	</main>
 </Body>
+
+<style>
+	main {
+		position: relative;
+		height: 100svh;
+		width: 100%;
+	}
+
+	.welcome-desktop {
+		position: absolute;
+		object-fit: cover;
+		z-index: 1;
+	}
+</style>
