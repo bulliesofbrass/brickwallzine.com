@@ -4,8 +4,6 @@
 // import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 
-import IMG_0751 from "./IMG_0751.jpeg";
-
 // import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
 
@@ -14,13 +12,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 interface Props {
 	title: string;
 	description: string;
-	image?: ImageMetadata;
+	image: ImageMetadata;
 }
 
 const {
 	title,
 	description,
-	image = IMG_0751
+	image
 } = Astro.props;
 ---
 
