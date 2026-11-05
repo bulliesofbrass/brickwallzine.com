@@ -1,0 +1,29 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--color-eggshell);
+	font-family: var(--font-afacad-flux);
+}
+
+@media (width < 800px) {
+	.desktop {
+		display: none;
+	}
+}
+
+@media (width >= 800px) {
+	.mobile {
+		display: none;
+	}
+}
+
+@layer reset {
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-oi);
+		font-weight: normal;
+		margin: 0;
+	}
+
+	h1 { font-size: 2rem }
+}
