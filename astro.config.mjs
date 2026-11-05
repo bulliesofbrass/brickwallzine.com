@@ -14,7 +14,7 @@ export default defineConfig({
 
 		{
 			provider: fontProviders.fontsource(), name: "Afacad Flux", cssVariable: "--font-afacad-flux",
-			weights: [400], styles: ["normal", "italic"], fallbacks: ["sans-serif"]
+			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
 		}
 	]
 });
