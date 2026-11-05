@@ -37,7 +37,8 @@ const {
 		width: 100%;
 
 		position: absolute;
-		top: calc(var(--polaroid-height) / -2 * 1.5);
+		top: calc(200svh + var(--polaroid-height) / -2 * 1.5);
+		right: 50px;
 		z-index: 100;
 
 		display: flex;
@@ -71,7 +72,7 @@ const {
 	.image :global(img) {
 		animation: develop ease-in both;
 		animation-timeline: scroll(root);
-		animation-range: 0 100svh;
+		animation-range: 200svh 300svh;
 	}
 
 	@keyframes develop {
