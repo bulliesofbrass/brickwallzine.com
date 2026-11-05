@@ -1,22 +1,17 @@
 <div class="logo">
-	<div class="brick">BRICK</div>
-	<div class="wall">WALL</div>
-
-	<!-- <div class="brick">Brick Wall</div> -->
-	<!-- <div class="wall">Magazine</div> -->
+	BRICK WALL
 </div>
 
 <style>
 	.logo {
-		--font-size: 64px;
+		--font-size: 96px;
 
 		font-family: var(--font-oi);
 		display: flex;
 		flex-direction: column;
+		animation: boil 400ms steps(1, end) infinite;
 
-		.brick, .wall {
-			font-size: var(--font-size);
-			line-height: var(--font-size);
-		}
+		font-size: var(--font-size);
+		line-height: var(--font-size);
 	}
 </style>
