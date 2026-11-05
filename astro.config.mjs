@@ -21,6 +21,11 @@ export default defineConfig({
 		{
 			provider: fontProviders.fontsource(), name: "Afacad Flux", cssVariable: "--font-afacad-flux",
 			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
+		},
+
+		{
+			provider: fontProviders.fontsource(), name: "Babylonica", cssVariable: "--font-babylonica",
+			weights: [400], styles: ["normal"], fallbacks: ["cursive"]
 		}
 	]
 });

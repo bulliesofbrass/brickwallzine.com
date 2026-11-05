@@ -1,6 +1,6 @@
 ---
 import { Image } from "#lib/elements";
-import scarlit from "./scarlet.jpg";
+import scarlet from "./scarlet.png";
 import kalypso from "./kalypso.png";
 
 interface Props {
@@ -14,17 +14,19 @@ const {
 ---
 
 <div id="polaroids" class:list={[className]} {...rest}>
-	<div class="polaroid">
+	<a class="polaroid" href="https://www.instagram.com/scarletsomerville/" target="_blank" rel="noopener noreferrer">
 		<div class="image">
-			<Image src={scarlit} style="height: 100%; width: auto; max-width: none;" />
+			<Image src={scarlet} />
 		</div>
-	</div>
+		<span class="caption scarlet">Scarlet</span>
+	</a>
 
-	<div class="polaroid">
+	<a class="polaroid" href="https://www.instagram.com/kalyptt/" target="_blank" rel="noopener noreferrer">
 		<div class="image">
-			<Image src={kalypso} style="object-fit: contain; height: 100%; width: 100%;"/>
+			<Image src={kalypso} />
 		</div>
-	</div>
+		<span class="caption kalypso">Kalypso</span>
+	</a>
 </div>
 
 <style>
@@ -50,19 +52,49 @@ const {
 		height: var(--polaroid-height);
 		width: var(--polaroid-width);
 
+		display: flex;
+		flex-direction: column;
+
 		padding: 15px;
 		box-sizing: border-box;
 
 		background-color: white;
+
+		text-decoration: none;
 	}
 
 	.image {
-		height: auto;
-		width: 100%;
 		aspect-ratio: 1/1;
 		background: black;
-		overflow: hidden;
-		display: flex;
-		justify-content: center;
+	}
+
+	.image :global(img) {
+		animation: develop ease-in both;
+		animation-timeline: scroll(root);
+		animation-range: 0 100svh;
+	}
+
+	@keyframes develop {
+		from {
+			opacity: 0;
+		}
+	}
+
+	.caption {
+		flex: 1;
+		display: grid;
+		place-items: center;
+		color: black;
+		font-family: var(--font-babylonica);
+		font-size: 64px;
+	}
+
+	.caption.scarlet {
+		translate: -10px 0px;
+	}
+
+	.caption.kalypso {
+		translate: -10px;
+		font-size: 50px;
 	}
 </style>
