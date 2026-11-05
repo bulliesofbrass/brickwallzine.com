@@ -14,7 +14,7 @@ export default defineConfig({
 
 	fonts: [
 		{
-			provider: fontProviders.fontsource(), name: "Oi", cssVariable: "--font-io",
+			provider: fontProviders.fontsource(), name: "Oi", cssVariable: "--font-oi",
 			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
 		},
 
