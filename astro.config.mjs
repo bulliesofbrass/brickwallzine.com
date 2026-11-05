@@ -38,6 +38,12 @@ export default defineConfig({
 			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
 		},
 
+		{
+			provider: fontProviders.fontsource(), name: "Rubik Distressed", cssVariable: "--font-rubik-distressed",
+			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
+		},
+
+
 // tilt-warp
 	]
 });

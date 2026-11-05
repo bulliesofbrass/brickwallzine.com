@@ -1,0 +1,36 @@
+@layer reset {
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+:root,
+:root body {
+	background: none;
+}
+
+main.blog {
+	max-width: 1000px;
+	margin: auto;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 1rem 0 2rem;
+}
+
+main.spread {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	height: 100svh;
+
+	> article {
+		height: 100svh;
+		max-width: none;
+		margin: 0;
+		padding: 2rem;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+}

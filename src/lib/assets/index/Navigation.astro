@@ -7,31 +7,32 @@ import { Logo } from "#lib/components";
 		<Logo />
 	</button>
 
-	<div class="links">
+	<!-- <div class="links">
 		<a href="/art">&nbsp;art&nbsp;</a>
 		<a href="/culture">&nbsp;culture&nbsp;</a>
 		<a href="/fashion">&nbsp;fashion&nbsp;</a>
-	</div>
+	</div> -->
 </nav>
 
 <style>
 	nav {
-		position: absolute;
-		height: inherit;
+		position: relative;
+		/* height: inherit; */
 
 		display: flex;
-		flex-direction: column;
+		/* flex-direction: column; */
 		justify-content: center;
 		width: 100%;
 		align-items: center;
 
-		padding: 1rem;
+		padding: 1.5rem;
 		box-sizing: border-box;
 
 		z-index: 100;
 	}
 
 	#menu {
+		display: block;
 		height: fit-content;
 
 		padding: 0;
