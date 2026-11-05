@@ -11,6 +11,11 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+	"imports": {
+		"#lib/components": "./src/lib/components/index.ts",
+		"#lib/elements": "./src/lib/elements/index.ts",
+		"#lib/*": "./src/lib/*"
+	},
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/afacad-flux": "^5.3.0",
