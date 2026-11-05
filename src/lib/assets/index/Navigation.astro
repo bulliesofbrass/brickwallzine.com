@@ -6,33 +6,20 @@ import { Logo } from "#lib/components";
 	<button id="menu" type="button" aria-label="Menu" aria-expanded="false">
 		<Logo />
 	</button>
-
-	<!-- <div class="links">
-		<a href="/art">&nbsp;art&nbsp;</a>
-		<a href="/culture">&nbsp;culture&nbsp;</a>
-		<a href="/fashion">&nbsp;fashion&nbsp;</a>
-	</div> -->
 </nav>
 
 <style>
 	nav {
-		position: relative;
-		/* height: inherit; */
+		position: absolute;
+		height: inherit;
 
 		display: flex;
-		/* flex-direction: column; */
-		justify-content: center;
-		width: 100%;
 		align-items: center;
-
-		padding: 1.5rem;
-		box-sizing: border-box;
 
 		z-index: 100;
 	}
 
 	#menu {
-		display: block;
 		height: fit-content;
 
 		padding: 0;
@@ -41,18 +28,5 @@ import { Logo } from "#lib/components";
 		background: none;
 
 		text-transform: uppercase;
-	}
-
-	.links {
-		display: flex;
-		gap: 2rem;
-
-		a {
-			font-size: 32px;
-			color: black;
-			text-decoration: black;
-			font-weight: bold;
-			font-family: var(--font-blackout-two-am);
-		}
 	}
 </style>
