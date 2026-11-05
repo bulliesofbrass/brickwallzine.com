@@ -1,9 +1,10 @@
 {
 	"files.exclude": {
-		"**/.astro": false,
-		"**/.vscode": false,
-		"**/dist": false,
-		"**/node_modules": false
+		"**/.astro": true,
+		"**/.claude": true,
+		"**/.vscode": true,
+		"**/dist": true,
+		"**/node_modules": true
 	},
 
 	"cSpell.language": "en-GB",
