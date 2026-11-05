@@ -1,6 +1,6 @@
 ---
 import { Body, Image } from "#lib/elements";
-import { IMG_0751 } from "#lib/assets/index";
+import { Navigation, IMG_0751 } from "#lib/assets/index";
 
 const SITE_TITLE = "BRICK WALL MAGAZINE";
 const SITE_DESCRIPTION = "";
@@ -8,15 +8,13 @@ const SITE_DESCRIPTION = "";
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
-	</header>
-
-	<main>
 		<Image class="welcome-desktop" src={IMG_0751} />
-	</main>
+		<Navigation />
+	</header>
 </Body>
 
 <style>
-	main {
+	header {
 		position: relative;
 		height: 100svh;
 		width: 100%;

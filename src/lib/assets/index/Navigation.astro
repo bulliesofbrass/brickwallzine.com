@@ -1,0 +1,32 @@
+---
+import { Logo } from "#lib/components";
+---
+
+<nav class="main" aria-label="Main">
+	<button id="menu" type="button" aria-label="Menu" aria-expanded="false">
+		<Logo />
+	</button>
+</nav>
+
+<style>
+	nav {
+		position: absolute;
+		height: inherit;
+
+		display: flex;
+		align-items: center;
+
+		z-index: 100;
+	}
+
+	#menu {
+		height: fit-content;
+
+		padding: 0;
+
+		border: none;
+		background: none;
+
+		text-transform: uppercase;
+	}
+</style>
