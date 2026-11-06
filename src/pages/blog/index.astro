@@ -5,7 +5,7 @@ import { formatDate } from "#lib";
 import { Body } from "#lib/elements";
 import { Navigation, Background, BlogPostCard } from "#lib/components";
 
-import { aura } from "#lib/assets";
+import { aura_png } from "#lib/assets";
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
@@ -20,7 +20,7 @@ const remaining = posts.slice(5);
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<Background image={aura} repeat />
+	<Background image={aura_png} repeat />
 
 	<header>
 		<Navigation />
