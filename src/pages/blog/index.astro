@@ -1,7 +1,8 @@
 ---
 import { Body, Section, Image } from "#lib/elements";
 import { Navigation } from "#lib/components";
-
+import { BlogPostCard } from "#lib/assets/blog";
+import { formatDate } from "#lib";
 // import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 // import BaseHead from '../../components/BaseHead.astro';
@@ -11,11 +12,15 @@ import { getCollection } from 'astro:content';
 // import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
 );
 
 const SITE_TITLE = "BLOG | BRICK WALL MAGAZINE";
 const SITE_DESCRIPTION = "";
+
+const [featured, ...rest] = posts;
+const secondary = rest.slice(0, 4);
+const remaining = rest.slice(4);
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -25,10 +30,46 @@ const SITE_DESCRIPTION = "";
 	</header>
 
 	<main>
-		<Section style="padding-top: 0">
-			<ul>
+		<div class="layout">
+			<div class="one">
+				{featured && (
+					<a class="featured" href={`/blog/${featured.id}/`}>
+						<div class="hero">
+							<img src={featured.data.heroImage.src} alt="" />
+						</div>
+						{/* <h2 class="title">{featured.data.title}</h2> */}
+					</a>
+				)}
+			</div>
+
+			<div class="two">
+				{secondary.map((post) => (
+					<div class="card">
+						<a href={`/blog/${post.id}`}>
+							<img src={post.data.heroImage.src} />
+							<div>
+								<span>{formatDate(post.data.datePublished)}</span>
+								{/* <span>{post.data.category}</span> */}
+								<h2>{post.data.title}</h2>
+							</div>
+						</a>
+					</div>
+				))}
+
+				{/* <BlogPostCard
+					slug={post.id}
+					title={post.data.title}
+					date={post.data.datePublished}
+					category={post.data.category}
+					hero={post.data.heroImage}
+				/> */}
+			</div>
+
+		</div>
+
+			<!-- <div>
 				{posts.map((post) => (
-					<li>
+					<div>
 						<a href={`/blog/${post.id}/`}>
 							{post.data.heroImage && (
 								<Image src={post.data.heroImage} alt="" />
@@ -37,16 +78,81 @@ const SITE_DESCRIPTION = "";
 							<h2 class="title">{post.data.title}</h2>
 
 							{/* <p class="date">
-								<FormattedDate date={post.data.pubDate} />
+								<FormattedDate date={post.data.datePublished} />
 							</p> */}
 						</a>
-					</li>
+					</div>
 				))}
-			</ul>
-		</Section>
+			</div> -->
 	</main>
 </Body>
 
 <style>
+	:root {
+		--header-height: 128px;
+	}
 
+	img {
+		display: block;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.layout {
+		/* height: calc(800svh - var(--header-height)); */
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 2rem;
+		padding: 1rem;
+		box-sizing: border-box;
+	}
+
+	.one {
+		position: relative;
+
+		img {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+		}
+	}
+
+	.two {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.card {
+		a {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 0.5rem;
+		}
+
+		> a > div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 0.25rem;
+		}
+
+		img {
+			aspect-ratio: 4 / 3;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+			line-height: 1.5rem;
+		}
+	}
 </style>
+
+
+
+
+
+
+
+
+
+

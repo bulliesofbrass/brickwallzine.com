@@ -1,0 +1,97 @@
+---
+import { formatDate } from "#lib";
+
+interface Props {
+	slug: string;
+	title: string;
+	date: Date;
+	category: string;
+	hero: ImageMetadata;
+}
+
+const { slug, title, date, category, hero} = Astro.props;
+---
+
+<a class="card" href={`/blog/${slug}/`}>
+	<div class="image">
+		<img alt="" src={hero.src} />
+	</div>
+
+	<div class="text">
+		<div class="date">{formatDate(date)}</div>
+
+		<div class="title">{title}</div>
+	</div>
+</a>
+
+<style>
+	.card {
+		display: grid;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+		gap: 0.5rem;
+		/* min-height: 300px; */
+		/* background-color: rgba(131, 12, 12, 1); */
+		box-sizing: border-box;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	@media(width < 700px) {
+		.card {
+			display: flex;
+			flex-direction: column;
+			padding: 0;
+		}
+
+		.image {
+			aspect-ratio: 4 / 3;
+		}
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 2rem 0.5rem;
+		box-sizing: border-box;
+	}
+
+	.title {
+		font-size: 2rem;
+		line-height: 2.25rem;
+		font-family: 'Archivo Black', sans-serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	@media(width < 700px) {
+		.text {
+			padding: 0.5rem 0.5rem 2rem;
+		}
+
+		.title {
+			font-size: 1.5rem;
+			line-height: 1.75rem;
+		}
+	}
+
+	.category,
+	.date,
+	.author {
+		font-size: 1.25rem;
+		line-height: 1.25rem;
+		font-family: 'Kode Mono Variable', monospace;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	.category {
+		text-transform: uppercase;
+	}
+</style>
