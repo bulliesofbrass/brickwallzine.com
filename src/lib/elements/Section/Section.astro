@@ -1,0 +1,44 @@
+---
+interface Props {
+	style?: astroHTML.JSX.HTMLAttributes['style'];
+	maxWidth?: string;
+	backgroundColor?: string;
+}
+
+const {
+	style,
+	maxWidth = "1000px",
+	backgroundColor = "transparent"
+} = Astro.props;
+---
+
+<section style={style}>
+	<div>
+		<slot />
+	</div>
+</section>
+
+<style define:vars={{ maxWidth, backgroundColor }}>
+	section {
+		padding: 3rem 1rem;
+		box-sizing: border-box;
+
+		background-color: var(--backgroundColor);
+	}
+
+	@media (width < 800px) {
+		section {
+			padding: 2rem 0.5rem;
+		}
+	}
+
+	div {
+		max-width: var(--maxWidth);
+		margin: auto;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+	}
+</style>

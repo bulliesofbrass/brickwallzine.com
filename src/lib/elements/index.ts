@@ -1,4 +1,6 @@
+export { default as Article } from "./Article/Article.astro";
 export { default as Body } from "./Body/Body.astro";
 export { default as Head } from "./Head/Head.astro";
 export { default as HTML } from "./HTML/HTML.astro";
 export { default as Image } from "./Image/Image.astro";
+export { default as Section } from "./Section/Section.astro";
