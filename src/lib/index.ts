@@ -20,3 +20,5 @@ export function formatDate(date: Date, format: "medium" | "long" = "medium"): st
 export function toCapitalised(i: string) {
 	return String(i).charAt(0).toUpperCase() + String(i).slice(1);
 }
+
+export * as content from "./content";
