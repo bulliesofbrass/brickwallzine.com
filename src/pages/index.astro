@@ -22,12 +22,15 @@ const SITE_DESCRIPTION = "";
 		position: relative;
 		height: 100svh;
 		width: 100%;
+
+		:global(nav) {
+			position: relative;
+		}
 	}
 
 	.welcome-desktop {
 		position: absolute;
 		object-fit: cover;
-		z-index: 1;
 	}
 
 	main {
