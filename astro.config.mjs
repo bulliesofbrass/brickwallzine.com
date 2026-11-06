@@ -22,5 +22,10 @@ export default defineConfig({
 			provider: fontProviders.fontsource(), name: "Afacad", cssVariable: "--font-afacad",
 			weights: ["400 700"], styles: ["normal", "italic"], fallbacks: ["sans-serif"]
 		},
+
+		{
+			provider: fontProviders.fontsource(), name: "Babylonica", cssVariable: "--font-babylonica",
+			weights: [400], styles: ["normal"], fallbacks: ["cursive"]
+		},
 	]
 });
