@@ -1,35 +1,75 @@
 ---
 import { Logo } from "#lib/components";
 
+import bag from "./bag.png";
+
 const isHome = Astro.url.pathname === "/";
 ---
 
 <nav class:list={["main", { home: isHome }]}>
-	<Logo />
 
-	{Astro.url.pathname === "/" && (
-		<div class="links">
-			<a href="/blog/">blog</a>
-			<a href="/about/">about</a>
-			<a href="/contact/">contact</a>
-		</div>
+	{!isHome && (
+		<button
+			id="bag"
+			type="button"
+			aria-label="Open menu"
+			style={`background-image: url(${bag.src}); aspect-ratio: ${bag.width} / ${bag.height};`}
+		></button>
 	)}
+
+	<div class="center">
+		<Logo />
+
+		{isHome && (
+			<div class="links">
+				<a href="/blog/">blog</a>
+				<a href="/about/">about</a>
+				<a href="/contact/">contact</a>
+			</div>
+		)}
+	</div>
 </nav>
 
 <style>
 	nav {
 		--gap: 1rem;
 
-		display: flex;
-		justify-content: center;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
-		gap: var(--gap);
+		gap: var(--var);
 		padding: 3rem;
 		box-sizing: border-box;
 	}
 
-	nav.home {
+	#bag {
+		align-self: stretch;
+		justify-self: start;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		transition: transform 0.15s ease;
+		filter:
+			drop-shadow(2px 0 0 black)
+			drop-shadow(-2px 0 0 black)
+			drop-shadow(0 2px 0 black)
+			drop-shadow(0 -2px 0 black);
+
+		&:hover {
+			transform: scale(1.10);
+		}
+	}
+
+	.center {
+		grid-column: 2;
+		display: flex;
 		flex-direction: column;
+		align-items: center;
+		gap: var(--gap);
 	}
 
 	.links {
