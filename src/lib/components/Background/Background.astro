@@ -8,12 +8,22 @@ interface Props {
 const { image } = Astro.props;
 ---
 
-<Image class="background" src={image} />
+<div class="background" aria-hidden="true">
+	<Image src={image} />
+</div>
 
 <style>
 	.background {
 		position: absolute;
-		object-fit: cover;
+		inset: 0;
 		z-index: -1;
+		pointer-events: none;
+
+		:global(img) {
+			display: block;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
 	}
 </style>

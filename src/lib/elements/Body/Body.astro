@@ -11,11 +11,7 @@ interface Props {
 	image?: ImageMetadata;
 }
 
-const {
-	title,
-	description,
-	image = IMG_0751
-} = Astro.props;
+const { title, description, image = IMG_0751 } = Astro.props;
 ---
 
 <HTML>
@@ -25,3 +21,9 @@ const {
 		<slot />
     </body>
 </HTML>
+
+<style>
+	body {
+		isolation: isolate;
+	}
+</style>

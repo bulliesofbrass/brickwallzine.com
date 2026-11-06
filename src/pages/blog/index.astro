@@ -53,7 +53,6 @@ const remaining = posts;
 					</div>
 				))}
 			</div>
-
 		</div>
 
 		<div class="three">
@@ -82,10 +81,9 @@ const remaining = posts;
 	}
 
 	.layout {
-		/* height: calc(800svh - var(--header-height)); */
 		display: grid;
 		grid-template-columns: 2fr 1fr;
-		gap: 2rem;
+		gap: 1rem;
 		padding: 0 1rem 1rem 0;
 		box-sizing: border-box;
 	}
@@ -111,30 +109,40 @@ const remaining = posts;
 	.two {
 		display: grid;
 		gap: 1rem;
+
+		.card {
+			a {
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				gap: 0.75rem;
+				background-color: white;
+			}
+
+			> a > div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				gap: 0.25rem;
+			}
+
+			img {
+				aspect-ratio: 4 / 3;
+			}
+
+			h2 {
+				font-size: 1.25rem;
+				line-height: 1.5rem;
+			}
+		}
 	}
 
-	.card {
-		a {
-			display: grid;
-			grid-template-columns: 1fr 2fr;
-			gap: 0.5rem;
-		}
 
-		> a > div {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			gap: 0.25rem;
-		}
-
-		img {
-			aspect-ratio: 4 / 3;
-		}
-
-		h2 {
-			font-size: 1.25rem;
-			line-height: 1.5rem;
-		}
+	.three {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0.5rem;
+		box-sizing: border-box;
 	}
 </style>
 
