@@ -1,5 +1,6 @@
 ---
-import { Body, Image } from "#lib/elements";
+import { Body } from "#lib/elements";
+import { Background } from "#lib/components";
 import { Navigation } from "#lib/components";
 import { IMG_0751 } from "#lib/assets/index";
 
@@ -9,7 +10,7 @@ const SITE_DESCRIPTION = "";
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
-		<Image class="welcome-desktop" src={IMG_0751} />
+		<Background image={IMG_0751} />
 		<Navigation />
 	</header>
 
@@ -27,11 +28,6 @@ const SITE_DESCRIPTION = "";
 		:global(nav) {
 			position: relative;
 		}
-	}
-
-	.welcome-desktop {
-		position: absolute;
-		object-fit: cover;
 	}
 
 	main {

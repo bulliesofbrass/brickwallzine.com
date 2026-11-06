@@ -1,15 +1,11 @@
 ---
 import { Body, Section, Image } from "#lib/elements";
-import { Navigation } from "#lib/components";
+import { Navigation, Background } from "#lib/components";
 import { BlogPostCard } from "#lib/assets/blog";
 import { formatDate } from "#lib";
-// import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-// import BaseHead from '../../components/BaseHead.astro';
-// import Footer from '../../components/Footer.astro';
-// import FormattedDate from '../../components/FormattedDate.astro';
-// import Header from '../../components/Header.astro';
-// import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+import { IMG_0751 } from "#lib/assets/index";
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
@@ -20,26 +16,28 @@ const SITE_DESCRIPTION = "";
 
 const [featured, ...rest] = posts;
 const secondary = rest.slice(0, 4);
-const remaining = rest.slice(4);
+const remaining = posts;
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
-		<!-- <Image class="welcome-desktop" src={IMG_0751} /> -->
+		<Background image={IMG_0751} />
 		<Navigation />
 	</header>
 
 	<main>
 		<div class="layout">
 			<div class="one">
-				{featured && (
-					<a class="featured" href={`/blog/${featured.id}/`}>
-						<div class="hero">
-							<img src={featured.data.heroImage.src} alt="" />
-						</div>
-						{/* <h2 class="title">{featured.data.title}</h2> */}
-					</a>
-				)}
+				<a class="featured" href={`/blog/${featured.id}/`}>
+					<div class="hero">
+						<img src={featured.data.heroImage.src} alt="" />
+					</div>
+
+					<div class="text">
+						<div>{formatDate(featured.data.datePublished)}</div>
+						<h2 class="title">{featured.data.title}</h2>
+					</div>
+				</a>
 			</div>
 
 			<div class="two">
@@ -55,35 +53,21 @@ const remaining = rest.slice(4);
 						</a>
 					</div>
 				))}
+			</div>
 
-				{/* <BlogPostCard
+		</div>
+
+		<div class="three">
+			{remaining.map((post) => (
+				<BlogPostCard
 					slug={post.id}
 					title={post.data.title}
 					date={post.data.datePublished}
 					category={post.data.category}
 					hero={post.data.heroImage}
-				/> */}
-			</div>
-
+				/>
+			))}
 		</div>
-
-			<!-- <div>
-				{posts.map((post) => (
-					<div>
-						<a href={`/blog/${post.id}/`}>
-							{post.data.heroImage && (
-								<Image src={post.data.heroImage} alt="" />
-							)}
-
-							<h2 class="title">{post.data.title}</h2>
-
-							{/* <p class="date">
-								<FormattedDate date={post.data.datePublished} />
-							</p> */}
-						</a>
-					</div>
-				))}
-			</div> -->
 	</main>
 </Body>
 
@@ -103,7 +87,7 @@ const remaining = rest.slice(4);
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		gap: 2rem;
-		padding: 1rem;
+		padding: 0 1rem 1rem 0;
 		box-sizing: border-box;
 	}
 
@@ -114,6 +98,14 @@ const remaining = rest.slice(4);
 			position: absolute;
 			inset: 0;
 			height: 100%;
+		}
+
+		.text {
+			position: absolute;
+			left: 0;
+			bottom: 2rem;
+			padding: 1rem 2.5rem;
+			background: #fff;
 		}
 	}
 

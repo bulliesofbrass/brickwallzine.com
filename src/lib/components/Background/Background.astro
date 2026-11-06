@@ -1,0 +1,19 @@
+---
+import { Image } from "#lib/elements";
+
+interface Props {
+	image: ImageMetadata;
+}
+
+const { image } = Astro.props;
+---
+
+<Image class="background" src={image} />
+
+<style>
+	.background {
+		position: absolute;
+		object-fit: cover;
+		z-index: -1;
+	}
+</style>
