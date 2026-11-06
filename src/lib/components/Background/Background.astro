@@ -5,18 +5,20 @@ interface Props {
 	image: ImageMetadata;
 	repeat?: boolean;
 	opacity?: number;
+	tiles?: number;
 }
 
-const { image, repeat = false, opacity } = Astro.props;
-
-const style = [
-	opacity !== undefined && `opacity: ${opacity}`,
-	repeat && `background-image: url("${image.src}")`,
-].filter(Boolean).join("; ");
+const { image, repeat = false, opacity, tiles = 10 } = Astro.props;
 ---
 
-<div class:list={["background", { repeat }]} style={style || undefined} aria-hidden="true">
-	{!repeat && <Image src={image} />}
+<div
+	class:list={["background", { repeat }]}
+	style={opacity !== undefined ? `opacity: ${opacity}` : undefined}
+	aria-hidden="true"
+>
+	{repeat
+		? Array.from({ length: tiles }, (_, i) => <Image src={image} class={i % 2 ? "flipped" : undefined} />)
+		: <Image src={image} />}
 </div>
 
 <style>
@@ -34,14 +36,20 @@ const style = [
 		}
 	}
 
+	.repeat {
+		overflow: hidden;
+
+		:global(img) {
+			height: auto;
+		}
+
+		:global(.flipped) {
+			transform: scaleY(-1);
+		}
+	}
+
 	:global(body:has(> .background.repeat)) {
 		position: relative;
 		min-height: 100dvh;
-	}
-
-	.repeat {
-		background-position: top center;
-		background-size: 100% auto;
-		background-repeat: repeat-y;
 	}
 </style>

@@ -37,7 +37,7 @@ const remaining = posts;
 					</div>
 
 					<div class="text">
-						<div class="date">{formatDate(featured.data.datePublished)}</div>
+						<!-- <div class="date">{formatDate(featured.data.datePublished)}</div> -->
 						<h2 class="title">{featured.data.title}</h2>
 					</div>
 				</a>
@@ -79,6 +79,9 @@ const remaining = posts;
 <style>
 	:root {
 		--header-height: 128px;
+		--ink: #1A0A08;
+		--cream: #FFF1E0;
+		--coral: #FFB38A;
 	}
 
 	main {
@@ -88,6 +91,7 @@ const remaining = posts;
 
 	img {
 		display: block;
+		height: 100%;
 		width: 100%;
 		object-fit: cover;
 	}
@@ -130,26 +134,21 @@ const remaining = posts;
 
 		.text {
 			position: absolute;
-			left: 0;
-			bottom: 2rem;
-			padding: 0.5rem 2.5rem;
-			background: white;
-
-			/* background-color: rgba(from #F89589 r g b / 1); */
-			background: rgba(from #3D3937 r g b / 0.5);
-
-			/* border: 1px solid black; */
+			inset: auto 0 0 0;
+			padding: 6rem 2.5rem 2.5rem;
+			background: linear-gradient(to top, rgba(from var(--ink) r g b / 0.85), rgba(from var(--ink) r g b / 0));
+			color: var(--cream);
 
 			.title {
 				font-size: 2rem;
+				color: var(--cream);
 			}
 
-			.title,
 			.date {
-				color: white;
+				color: var(--coral);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
 			}
-
-
 		}
 	}
 
@@ -209,11 +208,13 @@ const remaining = posts;
 
 
 	.three {
-		--gap: 0.5rem;
+		--gap: 2rem;
+		column-gap: 2rem;
+		row-gap: 2rem;
 
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--gap);
+		/* gap: var(--gap); */
 		padding: var(--gap);
 		box-sizing: border-box;
 
@@ -222,13 +223,3 @@ const remaining = posts;
 		}
 	}
 </style>
-
-
-
-
-
-
-
-
-
-
