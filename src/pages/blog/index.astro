@@ -16,7 +16,7 @@ const SITE_DESCRIPTION = "";
 
 const [featured, ...rest] = posts;
 const secondary = rest.slice(0, 4);
-const remaining = posts;
+const remaining = posts.slice(5);
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
