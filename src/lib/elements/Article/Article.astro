@@ -28,9 +28,16 @@ import { Section } from "#lib/elements";
 		text-decoration: underline;
 	}
 
-	article > p {
+	article > p,
+	article > ul > li,
+	article > ol > li {
 		font-size: 1.25rem;
 		line-height: 1.5rem;
 		margin: 0;
+	}
+
+	article > p > img {
+		height: auto;
+		width: 100%;
 	}
 </style>

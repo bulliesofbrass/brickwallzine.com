@@ -3,6 +3,8 @@ title: "Why We're Not Finding Love on the Tube"
 description: "Let's talk about how headphones are becoming too comfortable..."
 pubDate: "2026-08-07"
 heroImage: "./hero.jpg"
+category: "culture"
+authors: ["Scarlet Somerville"]
 ---
 
 As I’m sat in Gail’s with my wired headphones plugged in, I realise that I am indeed a victim, yet I proceed to write the article anyway.
@@ -24,5 +26,3 @@ It’s not even just about love - don’t think you taken ones can get away scot
 So I’m not saying ditch the wires, they can feature in the ‘what’s in my bag’ on a day trip to the city, but consider. Think about the person you are becoming when they’re connected to your device and filter out the background noise of the train. You might as well paint ‘Don’t talk to me’ across your face. You’re not only missing out perhaps on the outfit complement you never knew you needed, but also a potential date! Romance is not dead and we can start living like we’re in the movies - that’s if you want to.
 
 by scarlet
-
-#culture
