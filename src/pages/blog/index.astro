@@ -1,10 +1,9 @@
 ---
-import { Body, Section, Image } from "#lib/elements";
-import { Navigation, Background } from "#lib/components";
-import { BlogPostCard } from "#lib/assets/blog";
-import { formatDate } from "#lib";
 import { getCollection } from 'astro:content';
 
+import { formatDate } from "#lib";
+import { Body } from "#lib/elements";
+import { Navigation, Background, BlogPostCard } from "#lib/components";
 import { IMG_0751 } from "#lib/assets/index";
 
 const posts = (await getCollection('blog')).sort(

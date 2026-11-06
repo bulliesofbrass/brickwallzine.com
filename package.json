@@ -12,12 +12,12 @@
     "astro": "astro"
   },
   "imports": {
+	"#lib": "./src/lib/index.ts",
+    "#lib/*": "./src/lib/*",
 	"#lib/assets/blog": "./src/lib/assets/blog/index.ts",
 	"#lib/assets/index": "./src/lib/assets/index/index.ts",
     "#lib/components": "./src/lib/components/index.ts",
-    "#lib/elements": "./src/lib/elements/index.ts",
-    "#lib/*": "./src/lib/*",
-	"#lib": "./src/lib/index.ts"
+    "#lib/elements": "./src/lib/elements/index.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
