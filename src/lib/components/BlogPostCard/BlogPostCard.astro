@@ -25,10 +25,33 @@ const { slug, title, date, category, hero} = Astro.props;
 
 <style>
 	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.date {
+		text-align: center;
+		font-size: 1rem;
+	}
+
+	.title {
+		font-size: 1.25rem;
+		text-align: center;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		overflow: hidden;
+	}
+
+
+	/* .card {
+		display: grid;
+		grid-template-columns:
 		display: grid;
 		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
 		gap: 0.5rem;
-		/* background: white; */
 	}
 
 	.image, .text {
@@ -90,5 +113,5 @@ const { slug, title, date, category, hero} = Astro.props;
 
 	.category {
 		text-transform: uppercase;
-	}
+	} */
 </style>

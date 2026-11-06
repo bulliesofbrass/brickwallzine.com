@@ -2,7 +2,7 @@
 title: "august in accessories"
 description: "#haul"
 datePublished: "2026-08-09"
-heroImage: "./hero.webp"
+heroImage: "./cover.jpeg"
 category: "fashion"
 authors: ["Scarlet Somerville"]
 ---

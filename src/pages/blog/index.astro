@@ -206,20 +206,21 @@ const remaining = posts.slice(5);
 		}
 	}
 
-
 	.three {
-		--gap: 2rem;
-		column-gap: 2rem;
-		row-gap: 2rem;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
 
-		display: flex;
-		flex-wrap: wrap;
-		/* gap: var(--gap); */
-		padding: var(--gap);
+		padding: 0.5rem;
 		box-sizing: border-box;
 
-		> :global(.card) {
-			flex: 1 1 max(28rem, calc(50% - var(--gap) / 2));
+		:global(img) {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			aspect-ratio: 4 / 3;
+			object-fit: cover;
 		}
 	}
 </style>
