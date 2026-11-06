@@ -1,21 +1,42 @@
 ---
 import { Logo } from "#lib/components";
+
+const isHome = Astro.url.pathname === "/";
 ---
 
-<nav class="main" aria-label="Main">
+<nav class:list={["main", { home: isHome }]}>
 	<Logo />
 
-	<div class="links">
-		<a href="/blog/">blog</a>
-	</div>
+	{Astro.url.pathname === "/" && (
+		<div class="links">
+			<a href="/blog/">blog</a>
+			<a href="/about/">about</a>
+			<a href="/contact/">contact</a>
+		</div>
+	)}
 </nav>
 
 <style>
 	nav {
+		--gap: 1rem;
+
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		gap: var(--gap);
 		padding: 3rem;
 		box-sizing: border-box;
+	}
+
+	nav.home {
+		flex-direction: column;
+	}
+
+	.links {
+		display: flex;
+		font-family: var(--font-blackout-two-am);
+		font-weight: bold;
+		font-size: 42px;
+		gap: calc(var(--gap) * 2);
 	}
 </style>
