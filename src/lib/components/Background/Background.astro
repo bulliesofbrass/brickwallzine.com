@@ -3,13 +3,20 @@ import { Image } from "#lib/elements";
 
 interface Props {
 	image: ImageMetadata;
+	repeat?: boolean;
+	opacity?: number;
 }
 
-const { image } = Astro.props;
+const { image, repeat = false, opacity } = Astro.props;
+
+const style = [
+	opacity !== undefined && `opacity: ${opacity}`,
+	repeat && `background-image: url("${image.src}")`,
+].filter(Boolean).join("; ");
 ---
 
-<div class="background" aria-hidden="true">
-	<Image src={image} />
+<div class:list={["background", { repeat }]} style={style || undefined} aria-hidden="true">
+	{!repeat && <Image src={image} />}
 </div>
 
 <style>
@@ -25,5 +32,16 @@ const { image } = Astro.props;
 			width: 100%;
 			object-fit: cover;
 		}
+	}
+
+	:global(body:has(> .background.repeat)) {
+		position: relative;
+		min-height: 100dvh;
+	}
+
+	.repeat {
+		background-position: top center;
+		background-size: 100% auto;
+		background-repeat: repeat-y;
 	}
 </style>

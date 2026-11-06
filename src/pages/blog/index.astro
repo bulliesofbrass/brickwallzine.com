@@ -20,8 +20,9 @@ const remaining = posts;
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<Background image={aura} repeat />
+
 	<header>
-		<Background image={aura} />
 		<Navigation />
 	</header>
 
@@ -29,12 +30,14 @@ const remaining = posts;
 		<div class="layout">
 			<div class="one">
 				<a class="featured" href={`/blog/${featured.id}/`}>
-					<div class="hero">
-						<img src={featured.data.heroImage.src} alt="" />
+					<div class="hero image">
+						<div class="iimage">
+							<img src={featured.data.heroImage.src} alt="" />
+						</div>
 					</div>
 
 					<div class="text">
-						<div>{formatDate(featured.data.datePublished)}</div>
+						<div class="date">{formatDate(featured.data.datePublished)}</div>
 						<h2 class="title">{featured.data.title}</h2>
 					</div>
 				</a>
@@ -44,11 +47,14 @@ const remaining = posts;
 				{secondary.map((post) => (
 					<div class="card">
 						<a href={`/blog/${post.id}`}>
-							<img src={post.data.heroImage.src} />
-							<div>
-								<span>{formatDate(post.data.datePublished)}</span>
-								{/* <span>{post.data.category}</span> */}
-								<h2>{post.data.title}</h2>
+							<div class="image">
+								<img src={post.data.heroImage.src} />
+							</div>
+
+							<div class="text">
+								<span class="date">{formatDate(post.data.datePublished)}</span>
+								<h2 class="title">{post.data.title}</h2>
+								<span class="categories">{post.data.category}</span>
 							</div>
 						</a>
 					</div>
@@ -75,6 +81,11 @@ const remaining = posts;
 		--header-height: 128px;
 	}
 
+	main {
+		max-width: 1500px;
+		margin: auto;
+	}
+
 	img {
 		display: block;
 		width: 100%;
@@ -82,10 +93,12 @@ const remaining = posts;
 	}
 
 	.layout {
+		--blog-gap: 1rem;
+
 		display: grid;
 		grid-template-columns: 2fr 1fr;
-		gap: 1rem;
-		padding: 0 1rem 1rem 0;
+		gap: var(--blog-gap);
+		padding: 0.5rem 0.5rem 0.5rem 0rem;
 		box-sizing: border-box;
 	}
 
@@ -96,34 +109,85 @@ const remaining = posts;
 			position: absolute;
 			inset: 0;
 			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.image {
+			padding: 10px;
+			box-sizing: border-box;
+			border: 1px solid black;
+		}
+
+		.iimage {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+
+			padding: 10px;
+			box-sizing: border-box;
 		}
 
 		.text {
 			position: absolute;
 			left: 0;
 			bottom: 2rem;
-			padding: 1rem 2.5rem;
-			background: #fff;
+			padding: 0.5rem 2.5rem;
+			background: white;
+
+			/* background-color: rgba(from #F89589 r g b / 1); */
+			background: rgba(from #3D3937 r g b / 0.5);
+
+			/* border: 1px solid black; */
+
+			.title {
+				font-size: 2rem;
+			}
+
+			.title,
+			.date {
+				color: white;
+			}
+
+
 		}
 	}
 
 	.two {
 		display: grid;
-		gap: 1rem;
+		gap: var(--blog-gap);
 
 		.card {
+			/* background-color: rgba(from #F89589 r g b / 0.5); */
+
 			a {
 				display: grid;
 				grid-template-columns: 1fr 2fr;
-				gap: 0.75rem;
-				background: white;
+				/* gap: var(--blog-gap); */
+				gap: 5px;
+				/* border: 1px solid black; */
+				/* padding: 3px; */
+				box-sizing: border-box;
+
+				/* justify-content: start; */
+				/* background: white; */
+				/* border: 1px black solid; */
 			}
 
-			> a > div {
+			.image,
+			.text {
+				border: 1px solid black;
+				padding: 3px;
+				box-sizing: border-box;
+				background-color: rgba(from #F89589 r g b / 0.5);
+			}
+
+			.text {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				gap: 0.25rem;
+				padding-left: 0.5rem;
 			}
 
 			img {
@@ -134,6 +198,12 @@ const remaining = posts;
 				font-size: 1.25rem;
 				line-height: 1.5rem;
 			}
+		}
+
+		.date,
+		.categories {
+			text-transform: uppercase;
+			font-size: 1rem;
 		}
 	}
 

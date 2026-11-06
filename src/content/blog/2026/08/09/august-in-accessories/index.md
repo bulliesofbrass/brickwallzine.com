@@ -2,7 +2,7 @@
 title: "august in accessories"
 description: "#haul"
 datePublished: "2026-08-09"
-heroImage: "./hero.webp"
+heroImage: "../food-for-thought-evening-walk/hero.jpg"
 category: "fashion"
 authors: ["Scarlet Somerville"]
 ---

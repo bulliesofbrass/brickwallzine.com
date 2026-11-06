@@ -19,7 +19,6 @@ const { slug, title, date, category, hero} = Astro.props;
 
 	<div class="text">
 		<div class="date">{formatDate(date)}</div>
-
 		<div class="title">{title}</div>
 	</div>
 </a>
@@ -29,14 +28,20 @@ const { slug, title, date, category, hero} = Astro.props;
 		display: grid;
 		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
 		gap: 0.5rem;
-		background: white;
+		/* background: white; */
 	}
 
-	img {
-		height: 100%;
-		width: 100%;
-		aspect-ratio: 16 / 9;
-		object-fit: cover;
+	.image {
+		@media(width < 700px) {
+			aspect-ratio: 3 / 2;
+		}
+
+		img {
+			height: 100%;
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
 	}
 
 	@media(width < 700px) {
@@ -47,7 +52,6 @@ const { slug, title, date, category, hero} = Astro.props;
 		}
 
 		.image {
-			aspect-ratio: 3 / 2;
 		}
 	}
 
@@ -58,14 +62,6 @@ const { slug, title, date, category, hero} = Astro.props;
 		gap: 0.5rem;
 		padding: 2rem 0.5rem;
 		box-sizing: border-box;
-	}
-
-	.title {
-		font-size: 2rem;
-		line-height: 2.25rem;
-		font-family: 'Archivo Black', sans-serif;
-		font-weight: 400;
-		font-style: normal;
 	}
 
 	@media(width < 700px) {
@@ -84,8 +80,6 @@ const { slug, title, date, category, hero} = Astro.props;
 	.author {
 		font-size: 1.25rem;
 		line-height: 1.25rem;
-		font-family: 'Kode Mono Variable', monospace;
-		font-weight: 400;
 		font-style: normal;
 	}
 

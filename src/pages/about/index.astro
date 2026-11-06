@@ -1,6 +1,6 @@
 ---
 import { Body } from "#lib/elements";
-import { Navigation } from "#lib/components";
+import { Background, Navigation } from "#lib/components";
 import { aura } from "#lib/assets";
 
 const SITE_TITLE = "ABOUT | BRICK WALL MAGAZINE";
@@ -8,18 +8,22 @@ const SITE_DESCRIPTION = "";
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<header>
-		<Navigation />
-	</header>
+	<div class="page">
+		<Background image={aura} repeat />
 
-	<main>
+		<header>
+			<Navigation />
+		</header>
 
-	</main>
+		<main>
+
+		</main>
+	</div>
 </Body>
 
-<style define:vars={{ aura: `url("${aura.src}")` }}>
-	:global(html) {
-		min-height: 100%;
-		background: var(--aura) top center / 100% auto repeat-y;
+<style>
+	.page {
+		position: relative;
+		min-height: 100svh;
 	}
 </style>
