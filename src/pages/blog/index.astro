@@ -6,6 +6,8 @@ import { Body } from "#lib/elements";
 import { Navigation, Background, BlogPostCard } from "#lib/components";
 import { IMG_0751 } from "#lib/assets/index";
 
+import aura from "./aura.png";
+
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
 );
@@ -20,7 +22,7 @@ const remaining = posts;
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
-		<Background image={IMG_0751} />
+		<Background image={aura} />
 		<Navigation />
 	</header>
 
@@ -115,7 +117,7 @@ const remaining = posts;
 				display: grid;
 				grid-template-columns: 1fr 2fr;
 				gap: 0.75rem;
-				background-color: white;
+				background: white;
 			}
 
 			> a > div {
@@ -138,11 +140,17 @@ const remaining = posts;
 
 
 	.three {
+		--gap: 0.5rem;
+
 		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		padding: 0.5rem;
+		flex-wrap: wrap;
+		gap: var(--gap);
+		padding: var(--gap);
 		box-sizing: border-box;
+
+		> :global(.card) {
+			flex: 1 1 max(28rem, calc(50% - var(--gap) / 2));
+		}
 	}
 </style>
 
