@@ -1,7 +1,7 @@
 ---
 title: "Why We're Not Finding Love on the Tube"
 description: "Let's talk about how headphones are becoming too comfortable..."
-pubDate: "2026-08-07"
+datePublished: "2026-08-07"
 heroImage: "./hero.jpg"
 category: "culture"
 authors: ["Scarlet Somerville"]

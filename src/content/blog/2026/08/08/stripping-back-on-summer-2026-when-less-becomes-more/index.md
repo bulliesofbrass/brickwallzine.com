@@ -1,7 +1,7 @@
 ---
 title: "Stripping Back on Summer 2026 - When Less Becomes More"
 description: "Essentialism & our summer 2026 fashion."
-pubDate: "2026-08-08"
+datePublished: "2026-08-08"
 heroImage: "./hero.jpg"
 category: "culture"
 authors: ["Kalypso Isaidou"]

@@ -1,7 +1,7 @@
 ---
 title: "Food for Thought//Evening Walk"
 description: "Short poem on clearing my head."
-pubDate: "2026-08-09"
+datePublished: "2026-08-09"
 heroImage: "./hero.jpg"
 category: "culture"
 authors: ["Kalypso Isaidou"]
