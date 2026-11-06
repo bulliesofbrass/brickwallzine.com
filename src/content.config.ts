@@ -17,6 +17,8 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			category: z.enum(['art', 'culture', 'fashion']),
+			authors: z.array(z.string()),
 		}),
 });
 

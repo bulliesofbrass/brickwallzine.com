@@ -1,8 +1,8 @@
 ---
 title: "Stripping Back on Summer 2026 - When Less Becomes More"
-description: "Let's talk about how headphones are becoming too comfortable..."
-pubDate: "2026-08-07"
-heroImage: "./cover.jpg"
+description: "Essentialism & our summer 2026 fashion."
+pubDate: "2026-08-08"
+heroImage: "./hero.jpg"
 category: "culture"
 authors: ["Kalypso Isaidou"]
 ---
@@ -11,7 +11,7 @@ In recent seasons, the term ‘recession indicator’ has been used to describe 
 
 Furthermore with an increase in vintage shopping, one of a kind pieces are bringing back a sense of appreciating individuality and pieces that are meant to last longer than the latest microtrend. Second hand shopping has also enabled a sense of further accessibility to more styles that are also affordable, allowing people to refresh elements of their wardrobe in a long-lasting way, making us less impressionable as consumers of the 21st century. The fashion industry, particularly the fast fashion sector, is one of the most polluting industries in the world, and as droughts and fires have also been a global, summer trend, these current fashion movements are bringing a new sense of direction in which environment and fashion are more compatible.
 
-![](./cover.jpg)
+![](./hero.jpg)
 
 1. Flip Flops, Shoe of the Summer
 
