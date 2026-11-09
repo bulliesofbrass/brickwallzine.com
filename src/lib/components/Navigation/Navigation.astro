@@ -6,19 +6,22 @@ import bag from "./bag.png";
 const isHome = Astro.url.pathname === "/";
 ---
 
-<nav class:list={["main", { home: isHome }]}>
+<nav>
 
 	{!isHome && (
 		<button
 			id="bag"
 			type="button"
 			aria-label="Open menu"
-			style={`background-image: url(${bag.src}); aspect-ratio: ${bag.width} / ${bag.height};`}
-		></button>
+		>
+			<img src={bag.src} width={bag.width} height={bag.height} alt="" />
+		</button>
 	)}
 
 	<div class="center">
-		<Logo />
+		{!isHome && (
+			<Logo />
+		)}
 
 		{isHome && (
 			<div class="links">
@@ -43,14 +46,13 @@ const isHome = Astro.url.pathname === "/";
 	}
 
 	#bag {
+		position: relative;
 		align-self: stretch;
 		justify-self: start;
+		aspect-ratio: 2767 / 1838;
 		padding: 0;
 		border: none;
 		background-color: transparent;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
 		cursor: pointer;
 		transition: transform 0.15s ease;
 		filter:
@@ -60,7 +62,15 @@ const isHome = Astro.url.pathname === "/";
 			drop-shadow(0 -2px 0 black);
 
 		&:hover {
-			transform: scale(1.10);
+			transform: scale(1.05);
+		}
+
+		img {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
 		}
 	}
 
