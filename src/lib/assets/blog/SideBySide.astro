@@ -1,20 +1,28 @@
 ---
 interface Props {
 	style?: astroHTML.JSX.HTMLAttributes['style'];
+	columns?: number;
+	stack?: boolean;
+	gap?: string;
 }
 
-const { style } = Astro.props;
+const {
+	style,
+	columns = 2,
+	stack = true,
+	gap = "1rem"
+} = Astro.props;
 ---
 
-<div class="side-by-side" style={style}>
+<div class:list={["side-by-side", { stack }]} style={style}>
 	<slot />
 </div>
 
-<style>
+<style define:vars={{ columns, gap }}>
 	.side-by-side {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
+		grid-template-columns: repeat(var(--columns), 1fr);
+		gap: var(--gap);
 	}
 
 	.side-by-side > :global(*) {
@@ -22,7 +30,7 @@ const { style } = Astro.props;
 	}
 
 	@media (width < 700px) {
-		.side-by-side {
+		.side-by-side.stack {
 			grid-template-columns: 1fr;
 		}
 	}
