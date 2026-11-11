@@ -1,13 +1,19 @@
 ---
 import bag from "./bag.png";
+import glasses from "./glasses.png";
 ---
 
-<nav style={`--bag-half: ${(37.5 * bag.width) / bag.height}px`}>
+<nav
+	style={`--bag-half: ${(37.5 * bag.width) / bag.height}px; --glasses-half: ${(72.5 * glasses.width) / glasses.height}px`}
+>
 	<div class="slot">
 		<div><a class="logo" href="/">brick wall</a></div>
 	</div>
 	<button type="button" aria-label="Toggle menu" aria-expanded="false">
-		<img alt="" src={bag.src} />
+		<picture>
+			<source media="(width < 900px)" srcset={glasses.src} />
+			<img alt="" src={bag.src} />
+		</picture>
 	</button>
 	<div class="slot links">
 		<div>
@@ -27,6 +33,7 @@ import bag from "./bag.png";
 
 <style>
 	nav {
+		--half: var(--bag-half);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -39,8 +46,8 @@ import bag from "./bag.png";
 		grid-template-columns: 1fr;
 		overflow-x: clip;
 		transition:
-			grid-template-columns 0.5s ease-in-out,
-			visibility 0.5s;
+			grid-template-columns 0.3s ease-in-out,
+			visibility 0.3s;
 	}
 
 	.slot > div {
@@ -73,15 +80,21 @@ import bag from "./bag.png";
 	button {
 		position: relative;
 		z-index: 1;
-		margin-inline: calc(var(--bag-half) * -1);
+		margin-inline: calc(var(--half) * -1) 0;
 		display: flex;
 		padding: 0;
 		border: 0;
 		background: none;
 		cursor: pointer;
+		transition: margin 0.5s ease-in-out;
+	}
+
+	nav:has([aria-expanded="true"]) button {
+		margin-inline: 0 calc(var(--half) * -1);
 	}
 
 	img {
+		display: block;
 		height: 75px;
 		width: auto;
 		transition: scale 0.2s;
@@ -104,7 +117,7 @@ import bag from "./bag.png";
 	}
 
 	.links a:first-child {
-		margin-left: calc(var(--bag-half) + 1rem);
+		margin-left: calc(var(--half) + 1rem);
 	}
 
 	.logo {
@@ -115,11 +128,44 @@ import bag from "./bag.png";
 		line-height: var(--font-size);
 		text-box: trim-both cap alphabetic;
 		width: fit-content;
-		margin-right: calc(var(--bag-half) + 1rem);
+		margin-right: calc(var(--half) + 1rem);
 		overflow: clip;
 		overflow-clip-margin: 0.05em;
 		text-transform: uppercase;
 		color: black;
 		text-decoration: none;
+	}
+
+	@media (width < 900px) {
+		nav {
+			--half: var(--glasses-half);
+		}
+
+		.links > div {
+			display: grid;
+			justify-items: start;
+			gap: 1rem;
+		}
+
+		.links a {
+			margin-left: calc(var(--half) + 1rem);
+			overflow: clip;
+			overflow-clip-margin: 0.05em;
+		}
+
+		img {
+			height: 145px;
+		}
+
+		.logo {
+			width: min-content;
+			white-space: normal;
+		}
+	}
+
+	@media (width < 600px) {
+		nav {
+			padding-inline: 1rem;
+		}
 	}
 </style>
