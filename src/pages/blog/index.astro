@@ -16,7 +16,6 @@ const SITE_DESCRIPTION = "";
 
 const [featured, ...rest] = posts;
 const secondary = rest.slice(0, 4);
-const remaining = posts.slice(5);
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -63,7 +62,7 @@ const remaining = posts.slice(5);
 		</div>
 
 		<div class="three">
-			{remaining.map((post) => (
+			{posts.map((post) => (
 				<BlogPostCard
 					slug={post.id}
 					title={post.data.title}
@@ -223,6 +222,23 @@ const remaining = posts.slice(5);
 			height: auto;
 			aspect-ratio: 4 / 3;
 			object-fit: cover;
+		}
+	}
+
+	@media (width < 900px) {
+		.layout {
+			display: none;
+		}
+
+		.three {
+			grid-template-columns: 1fr;
+			padding: 1rem 1rem 3rem;
+		}
+	}
+
+	@media (width >= 900px) {
+		.three > :global(:nth-child(-n + 5)) {
+			display: none;
 		}
 	}
 </style>
