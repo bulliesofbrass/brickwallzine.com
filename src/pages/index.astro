@@ -2,6 +2,7 @@
 import { Body } from "#lib/elements";
 import { Background } from "#lib/components";
 import bag from "../lib/components/Navigation/bag.png";
+import glasses from "../lib/components/Navigation/glasses.png";
 import { IMG_0751 } from "#lib/assets/index";
 
 const SITE_TITLE = "BRICK WALL ZINE";
@@ -11,15 +12,26 @@ const SITE_DESCRIPTION = "";
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
 		<Background image={IMG_0751} />
-		<nav>
-			<a href="/blog/">blog</a>
-			<a href="/about/">about</a>
-			<a href="/contact/">contact</a>
-
-			<img alt="" src={bag.src} />
-
-			<a href="https://www.instagram.com/brickwallzine/">Instagram</a>
-			<a href="https://substack.com/@brickwallzine">Substack</a>
+		<nav style={`--bag-half: ${(37.5 * bag.width) / bag.height}px`}>
+			<div class="slot">
+				<div>
+					<a href="/blog/">blog</a>
+					<a href="/about/">about</a>
+					<a href="/contact/">contact</a>
+				</div>
+			</div>
+			<button type="button" aria-label="Toggle links" aria-expanded="false">
+				<picture>
+					<source media="(width < 800px)" srcset={glasses.src} />
+					<img alt="" src={bag.src} />
+				</picture>
+			</button>
+			<div class="slot social">
+				<div>
+					<a href="https://www.instagram.com/brickwallzine/">Instagram</a>
+					<a href="https://substack.com/@brickwallzine">Substack</a>
+				</div>
+			</div>
 		</nav>
 	</header>
 
@@ -27,6 +39,13 @@ const SITE_DESCRIPTION = "";
 
 	</main>
 </Body>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>("nav button")!;
+	button.addEventListener("click", () => {
+		button.ariaExpanded = `${button.ariaExpanded !== "true"}`;
+	});
+</script>
 
 <style>
 	header {
@@ -40,19 +59,73 @@ const SITE_DESCRIPTION = "";
 		width: 100%;
 		font-family: var(--font-blackout-two-am);
 		font-size: 42px;
-		gap: 3rem;
 		padding: 3rem;
 		box-sizing: border-box;
 
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
 
+	.slot {
+		--size: 1fr;
+		display: grid;
+		grid-template-columns: var(--size);
+		overflow-x: clip;
+		transition:
+			grid-template-columns 0.25s ease-in-out,
+			grid-template-rows 0.25s ease-in-out,
+			visibility 0.25s;
+	}
+
+	.slot > div {
+		display: flex;
+		align-items: center;
+		gap: 3rem;
+		min-width: 0;
+		white-space: nowrap;
+	}
+
+	.slot.social {
+		justify-content: end;
+	}
+
+	.social > div {
+		justify-content: flex-end;
+	}
+
+	.slot.social,
+	nav:has([aria-expanded="true"]) .slot {
+		--size: 0fr;
+		visibility: hidden;
+	}
+
+	nav:has([aria-expanded="true"]) .social {
+		--size: 1fr;
+		visibility: visible;
+	}
+
+	button {
+		position: relative;
+		z-index: 1;
+		margin-inline: calc(var(--bag-half) * -1) 0;
+		display: flex;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		transition: margin 0.5s ease-in-out;
+	}
+
+	nav:has([aria-expanded="true"]) button {
+		margin-inline: 0 calc(var(--bag-half) * -1);
 	}
 
 	img {
+		display: block;
 		height: 75px;
 		width: auto;
+		transition: scale 0.2s;
 		filter:
 			drop-shadow(2px 0 0 black)
 			drop-shadow(-2px 0 0 black)
@@ -60,8 +133,71 @@ const SITE_DESCRIPTION = "";
 			drop-shadow(0 -2px 0 black);
 	}
 
+	button:hover img {
+		scale: 1.15;
+	}
+
 	a {
 		line-height: 1;
 		text-box: trim-both cap alphabetic;
+	}
+
+	.slot:not(.social) a:last-child {
+		margin-right: calc(var(--bag-half) + 3rem);
+	}
+
+	.social a:first-child {
+		margin-left: calc(var(--bag-half) + 3rem);
+	}
+
+	@media (width < 800px) {
+		nav {
+			flex-direction: column;
+		}
+
+		.slot {
+			grid-template-columns: 1fr;
+			grid-template-rows: var(--size);
+			overflow: visible clip;
+		}
+
+		.slot > div {
+			display: grid;
+			justify-items: center;
+			min-height: 0;
+		}
+
+		.slot.social,
+		.social > div {
+			align-content: end;
+		}
+
+		button {
+			height: 100px;
+			align-items: center;
+			margin: -50px 0 0;
+		}
+
+		nav:has([aria-expanded="true"]) button {
+			margin: 0 0 -50px;
+		}
+
+		.slot:not(.social) a:last-child {
+			margin: 0 0 calc(50px + 3rem);
+		}
+
+		.social a:first-child {
+			margin: calc(50px + 3rem) 0 0;
+		}
+
+		picture {
+			display: contents;
+		}
+
+		img {
+			width: 100px;
+			height: auto;
+			rotate: 90deg;
+		}
 	}
 </style>
