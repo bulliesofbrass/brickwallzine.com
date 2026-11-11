@@ -16,7 +16,7 @@ const post: CollectionEntry<'blog'> = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Body title={post.data.title} description={post.data.description}>
+<Body title={`${post.data.title} | BRICK WALL ZINE`} description={post.data.description}>
 	<Background image={aura_png} repeat />
 
 	<header>
