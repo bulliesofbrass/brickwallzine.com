@@ -2,7 +2,7 @@
 title: "Why We're Not Finding Love on the Tube"
 description: "Let's talk about how headphones are becoming too comfortable..."
 datePublished: "2026-08-07"
-heroImage: "./hero.jpg"
+heroImage: "./hero.webp"
 category: "culture"
 authors: ["Scarlet Somerville"]
 ---
@@ -24,5 +24,3 @@ I mean does that actually happen? I’m yet to find out. But if it does work out
 It’s not even just about love - don’t think you taken ones can get away scot free! A smile goes a long way but a small conversation goes way further! Learning about people’s lives is beautiful and enriching, especially if you’re a writer and you need some external facets of information to build a character. You could cast anyway you meet on the tube in your upcoming debut novel, but you won’t miss out on much if you save the listening for when you’re home alone cooking up a storm.
 
 So I’m not saying ditch the wires, they can feature in the ‘what’s in my bag’ on a day trip to the city, but consider. Think about the person you are becoming when they’re connected to your device and filter out the background noise of the train. You might as well paint ‘Don’t talk to me’ across your face. You’re not only missing out perhaps on the outfit complement you never knew you needed, but also a potential date! Romance is not dead and we can start living like we’re in the movies - that’s if you want to.
-
-by scarlet

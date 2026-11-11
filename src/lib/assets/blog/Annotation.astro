@@ -1,0 +1,21 @@
+---
+interface Props {
+	style?: astroHTML.JSX.HTMLAttributes['style'];
+}
+
+const { style } = Astro.props;
+---
+
+<div class="annotation" style={style}>
+	<slot />
+</div>
+
+<style>
+	.annotation {
+		text-align: center;
+
+		p {
+			margin: 0;
+		}
+	}
+</style>

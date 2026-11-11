@@ -1,0 +1,29 @@
+---
+interface Props {
+	style?: astroHTML.JSX.HTMLAttributes['style'];
+}
+
+const { style } = Astro.props;
+---
+
+<div class="side-by-side" style={style}>
+	<slot />
+</div>
+
+<style>
+	.side-by-side {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.side-by-side > :global(*) {
+		min-width: 0;
+	}
+
+	@media (width < 700px) {
+		.side-by-side {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -65,7 +65,7 @@ I love all the songs on my playlist but they start to wear out.
 
 I think about the pin holding my worn out dress together.
 
-And how if my γιαγιά1 were here she would pull out the old Dutch biscuit tin
+And how if my γιαγιά were here she would pull out the old Dutch biscuit tin
 
 and thread her needle.
 
@@ -94,5 +94,3 @@ since the benches are taken.
 I’m not sure I cleared my head.
 
 But I’ll try tomorrow instead.
-
-1 Greek word for grandma.

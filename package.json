@@ -12,16 +12,18 @@
     "astro": "astro"
   },
   "imports": {
-	"#lib": "./src/lib/index.ts",
+    "#lib": "./src/lib/index.ts",
     "#lib/*": "./src/lib/*",
-	"#lib/assets": "./src/lib/assets/index.ts",
-	"#lib/assets/about": "./src/lib/assets/about/index.ts",
-	"#lib/assets/blog": "./src/lib/assets/blog/index.ts",
-	"#lib/assets/index": "./src/lib/assets/index/index.ts",
+    "#lib/assets": "./src/lib/assets/index.ts",
+    "#lib/assets/about": "./src/lib/assets/about/index.ts",
+    "#lib/assets/blog": "./src/lib/assets/blog/index.ts",
+    "#lib/assets/index": "./src/lib/assets/index/index.ts",
     "#lib/components": "./src/lib/components/index.ts",
     "#lib/elements": "./src/lib/elements/index.ts"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.9",
+    "@astrojs/mdx": "^8.1.5",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.5"
   },
