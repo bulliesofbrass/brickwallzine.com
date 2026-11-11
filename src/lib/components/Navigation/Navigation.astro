@@ -1,61 +1,90 @@
 ---
-import { Logo } from "#lib/components";
-
 import bag from "./bag.png";
-
-const isHome = Astro.url.pathname === "/";
 ---
 
-<nav>
-	<div class="left">
-		<button id="bag" type="button" aria-label="Open menu">
-			<img src={bag.src} width={bag.width} height={bag.height} alt="" />
-		</button>
+<nav style={`--bag-half: ${(37.5 * bag.width) / bag.height}px`}>
+	<div class="slot">
+		<div><a class="logo" href="/">brick wall</a></div>
 	</div>
-
-	<div class="center">
-		<Logo />
+	<button type="button" aria-label="Toggle menu" aria-expanded="false">
+		<img alt="" src={bag.src} />
+	</button>
+	<div class="slot links">
+		<div>
+			<a href="/blog/">blog</a>
+			<a href="/about/">about</a>
+			<a href="/contact/">contact</a>
+		</div>
 	</div>
 </nav>
 
+<script>
+	const button = document.querySelector<HTMLButtonElement>("nav button")!;
+	button.addEventListener("click", () => {
+		button.ariaExpanded = `${button.ariaExpanded !== "true"}`;
+	});
+</script>
+
 <style>
 	nav {
-		width: 100%;
-		gap: 1rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		padding: 3rem;
 		box-sizing: border-box;
 	}
 
-	@media (width >= 960px) {
-		nav {
-			display: grid;
-			grid-template-columns: 1fr auto 1fr;
-			align-items: center;
-		}
+	.slot {
+		display: grid;
+		grid-template-columns: 1fr;
+		overflow-x: clip;
+		transition:
+			grid-template-columns 0.5s ease-in-out,
+			visibility 0.5s;
 	}
 
-	@media (width < 960px) {
-		nav {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-		}
-
-		.left {
-			display: none;
-		}
+	.slot > div {
+		min-width: 0;
+		white-space: nowrap;
 	}
 
-	#bag {
+	.slot.links {
+		justify-content: end;
+	}
+
+	.links > div {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.slot.links,
+	nav:has([aria-expanded="true"]) .slot {
+		grid-template-columns: 0fr;
+		visibility: hidden;
+	}
+
+	nav:has([aria-expanded="true"]) .links {
+		grid-template-columns: 1fr;
+		visibility: visible;
+	}
+
+	button {
 		position: relative;
-		align-self: stretch;
-		justify-self: start;
-		aspect-ratio: 2767 / 1838;
+		z-index: 1;
+		margin-inline: calc(var(--bag-half) * -1);
+		display: flex;
 		padding: 0;
-		border: none;
-		background-color: transparent;
+		border: 0;
+		background: none;
 		cursor: pointer;
+	}
+
+	img {
+		height: 75px;
+		width: auto;
+		transition: scale 0.2s;
 		filter:
 			drop-shadow(2px 0 0 black)
 			drop-shadow(-2px 0 0 black)
@@ -63,9 +92,34 @@ const isHome = Astro.url.pathname === "/";
 			drop-shadow(0 -2px 0 black);
 	}
 
-	#bag > img {
-		height: 75px;
-		width: auto;
+	button:hover img {
+		scale: 1.15;
 	}
 
+	a {
+		font-family: var(--font-blackout-two-am);
+		font-size: 42px;
+		line-height: 1;
+		text-box: trim-both cap alphabetic;
+	}
+
+	.links a:first-child {
+		margin-left: calc(var(--bag-half) + 1rem);
+	}
+
+	.logo {
+		--font-size: 64px;
+		display: block;
+		font-family: var(--font-oi);
+		font-size: var(--font-size);
+		line-height: var(--font-size);
+		text-box: trim-both cap alphabetic;
+		width: fit-content;
+		margin-right: calc(var(--bag-half) + 1rem);
+		overflow: clip;
+		overflow-clip-margin: 0.05em;
+		text-transform: uppercase;
+		color: black;
+		text-decoration: none;
+	}
 </style>

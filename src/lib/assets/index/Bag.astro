@@ -1,0 +1,139 @@
+---
+import bag from "../../components/Bag/bag.png";
+
+type Side = "top" | "right" | "bottom" | "left";
+
+interface Props {
+	open?: Side[];
+}
+
+const { open = [] } = Astro.props;
+---
+
+<div class="bag">
+	<div class="panel top" inert={!open.includes("top")}><div><slot name="top" /></div></div>
+	<div class="panel left" inert={!open.includes("left")}><div><slot name="left" /></div></div>
+	<button id="bag" type="button" aria-label="Menu" aria-pressed="false">
+		<img src={bag.src} width={bag.width} height={bag.height} alt="" />
+	</button>
+	<div class="panel right" inert={!open.includes("right")}><div><slot name="right" /></div></div>
+	<div class="panel bottom" inert={!open.includes("bottom")}><div><slot name="bottom" /></div></div>
+</div>
+
+<script>
+	const bag = document.getElementById("bag")!;
+	const panels = bag.parentElement!.querySelectorAll(".panel");
+
+	bag.addEventListener("click", () => {
+		bag.ariaPressed = String(bag.ariaPressed !== "true");
+		panels.forEach((panel) => panel.toggleAttribute("inert"));
+	});
+</script>
+
+<style>
+	.bag {
+		display: grid;
+		grid-template-areas:
+			". top ."
+			"left button right"
+			". bottom .";
+		place-items: center;
+	}
+
+	.top { grid-area: top; }
+	.left { grid-area: left; }
+	.right { grid-area: right; }
+	.bottom { grid-area: bottom; }
+
+	.panel {
+		display: grid;
+		grid-template: 1fr / 1fr;
+		transition: 2s ease;
+		transition-property: grid-template-columns, grid-template-rows;
+	}
+
+	.panel > div {
+		display: flex;
+		min-width: 0;
+		min-height: 0;
+	}
+
+	.panel > div > :global(*) {
+		flex-shrink: 0;
+	}
+
+	.left[inert],
+	.right[inert] {
+		grid-template-columns: 0fr;
+	}
+
+	.top[inert],
+	.bottom[inert] {
+		grid-template-rows: 0fr;
+	}
+
+	.left > div,
+	.right > div {
+		overflow-x: clip;
+	}
+
+	.top > div,
+	.bottom > div {
+		overflow-y: clip;
+	}
+
+	.right > div {
+		justify-content: flex-end;
+	}
+
+	.bottom > div {
+		align-items: flex-end;
+	}
+
+	#bag {
+		grid-area: button;
+		aspect-ratio: 2767 / 1838;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		filter:
+			drop-shadow(2px 0 0 black)
+			drop-shadow(-2px 0 0 black)
+			drop-shadow(0 2px 0 black)
+			drop-shadow(0 -2px 0 black);
+	}
+
+	#bag > img {
+		height: 75px;
+		width: auto;
+	}
+
+	@media (width < 850px) {
+		.bag {
+			grid-template-areas:
+				"top"
+				"left"
+				"button"
+				"right"
+				"bottom";
+		}
+
+		.left[inert],
+		.right[inert] {
+			grid-template-columns: 1fr;
+			grid-template-rows: 0fr;
+		}
+
+		.left > div,
+		.right > div {
+			overflow-x: visible;
+			overflow-y: clip;
+		}
+
+		.right > div {
+			justify-content: normal;
+			align-items: flex-end;
+		}
+	}
+</style>
