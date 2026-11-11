@@ -1,17 +1,21 @@
 ---
 import { Body } from "#lib/elements";
 import { Background } from "#lib/components";
-import { Navigation } from "#lib/components";
+// import { Navigation } from "#lib/components";
 import { IMG_0751 } from "#lib/assets/index";
 
-const SITE_TITLE = "BRICK WALL MAGAZINE";
+const SITE_TITLE = "BRICK WALL ZINE";
 const SITE_DESCRIPTION = "";
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<header>
 		<Background image={IMG_0751} />
-		<Navigation />
+		<nav>
+			<a href="/blog/">blog</a>
+			<a href="/about/">about</a>
+			<a href="/contact/">contact</a>
+		</nav>
 	</header>
 
 	<main>
@@ -23,8 +27,39 @@ const SITE_DESCRIPTION = "";
 	header {
 		position: relative;
 		height: 100svh;
-		width: 100%;
 		display: flex;
 		justify-content: center;
+	}
+
+	nav {
+		width: 100%;
+		font-family: var(--font-blackout-two-am);
+		font-size: 42px;
+		gap: 3rem;
+		padding: 3rem;
+		box-sizing: border-box;
+	}
+
+	a {
+		line-height: 1;
+		text-box: trim-both cap alphabetic;
+	}
+
+	@media (width >= 700px) {
+		nav {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	@media (width < 700px) {
+		nav {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+		}
 	}
 </style>

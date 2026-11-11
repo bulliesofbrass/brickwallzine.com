@@ -15,6 +15,7 @@
 	"#lib": "./src/lib/index.ts",
     "#lib/*": "./src/lib/*",
 	"#lib/assets": "./src/lib/assets/index.ts",
+	"#lib/assets/about": "./src/lib/assets/about/index.ts",
 	"#lib/assets/blog": "./src/lib/assets/blog/index.ts",
 	"#lib/assets/index": "./src/lib/assets/index/index.ts",
     "#lib/components": "./src/lib/components/index.ts",

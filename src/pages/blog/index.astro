@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
 );
 
-const SITE_TITLE = "BLOG | BRICK WALL MAGAZINE";
+const SITE_TITLE = "BLOG | BRICK WALL ZINE";
 const SITE_DESCRIPTION = "";
 
 const [featured, ...rest] = posts;
