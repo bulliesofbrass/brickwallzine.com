@@ -1,7 +1,8 @@
 ---
 import { Body } from "#lib/elements";
 import { Background } from "#lib/components";
-import { Bag, IMG_0751 } from "#lib/assets/index";
+import bag from "../lib/components/Navigation/bag.png";
+import { IMG_0751 } from "#lib/assets/index";
 
 const SITE_TITLE = "BRICK WALL ZINE";
 const SITE_DESCRIPTION = "";
@@ -11,17 +12,14 @@ const SITE_DESCRIPTION = "";
 	<header>
 		<Background image={IMG_0751} />
 		<nav>
-			<Bag open={["left"]}>
-				<div slot="left" class="links">
-					<a href="/blog/">blog</a>
-					<a href="/about/">about</a>
-					<a href="/contact/">contact</a>
-				</div>
-				<div slot="right" class="links">
-					<a href="https://www.instagram.com/brickwallzine/">Instagram</a>
-					<a href="https://substack.com/@brickwallzine">Substack</a>
-				</div>
-			</Bag>
+			<a href="/blog/">blog</a>
+			<a href="/about/">about</a>
+			<a href="/contact/">contact</a>
+
+			<img alt="" src={bag.src} />
+
+			<a href="https://www.instagram.com/brickwallzine/">Instagram</a>
+			<a href="https://substack.com/@brickwallzine">Substack</a>
 		</nav>
 	</header>
 
@@ -38,13 +36,6 @@ const SITE_DESCRIPTION = "";
 		justify-content: center;
 	}
 
-	.links {
-		display: flex;
-		gap: 3rem;
-		padding: 3rem;
-		box-sizing: border-box;
-	}
-
 	nav {
 		width: 100%;
 		font-family: var(--font-blackout-two-am);
@@ -52,32 +43,25 @@ const SITE_DESCRIPTION = "";
 		gap: 3rem;
 		padding: 3rem;
 		box-sizing: border-box;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+
+	img {
+		height: 75px;
+		width: auto;
+		filter:
+			drop-shadow(2px 0 0 black)
+			drop-shadow(-2px 0 0 black)
+			drop-shadow(0 2px 0 black)
+			drop-shadow(0 -2px 0 black);
 	}
 
 	a {
 		line-height: 1;
 		text-box: trim-both cap alphabetic;
-	}
-
-	@media (width >= 850px) {
-		nav {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-
-	@media (width < 850px) {
-		nav {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.links {
-			flex-direction: column;
-			align-items: center;
-		}
 	}
 </style>
