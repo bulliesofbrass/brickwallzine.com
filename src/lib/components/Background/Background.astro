@@ -8,19 +8,34 @@ interface Props {
 }
 
 const { image, repeat = false, opacity } = Astro.props;
+const ratio = image.height / image.width;
 ---
 
 <div
 	class:list={["background", { repeat }]}
-	style={{
-		opacity,
-		"--image": repeat ? `url("${image.src}")` : undefined,
-		"--ratio": repeat ? image.height / image.width : undefined,
-	}}
+	style={{ opacity, "--ratio": ratio }}
+	data-ratio={ratio}
 	aria-hidden="true"
 >
-	{!repeat && <Image src={image} />}
+	<Image src={image} />
+	{repeat && <Image src={image} class="flipped" />}
 </div>
+
+<script>
+	for (const background of document.querySelectorAll<HTMLElement>(".background.repeat")) {
+		const pair = [...background.children];
+		const ratio = Number(background.dataset.ratio);
+
+		new ResizeObserver(() => {
+			const tile = Math.max(1, Math.round(background.offsetWidth * ratio));
+			const tiles = Math.ceil(background.offsetHeight / tile);
+
+			while (background.children.length < tiles) {
+				background.append(...pair.map((node) => node.cloneNode(true)));
+			}
+		}).observe(background);
+	}
+</script>
 
 <style>
 	.background {
@@ -39,21 +54,14 @@ const { image, repeat = false, opacity } = Astro.props;
 
 	.repeat {
 		container-type: inline-size;
-		background: var(--image) top / 100% auto repeat-y;
+		overflow: hidden;
 
-		&::after {
-			--tile: calc(100cqw * var(--ratio));
+		:global(img) {
+			height: round(100cqw * var(--ratio), 1px);
+		}
 
-			content: "";
-			position: absolute;
-			inset: 0;
-			background: var(--image) bottom / 100% auto repeat-y;
+		:global(.flipped) {
 			transform: scaleY(-1);
-			mask-image: repeating-linear-gradient(
-				to top,
-				transparent 0 var(--tile),
-				black var(--tile) calc(var(--tile) * 2)
-			);
 		}
 	}
 
