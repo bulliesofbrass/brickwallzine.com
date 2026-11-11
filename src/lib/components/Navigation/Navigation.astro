@@ -3,7 +3,9 @@ import bag from "./bag.png";
 import glasses from "./glasses.png";
 ---
 
-<nav style={`--bag-half: ${(37.5 * bag.width) / bag.height}px; --glasses-half: ${(72.5 * glasses.width) / glasses.height}px`}>
+<nav
+	style={`--bag-half: ${(37.5 * bag.width) / bag.height}px; --glasses-half: ${(72.5 * glasses.width) / glasses.height}px`}
+>
 	<div class="slot">
 		<div><a class="logo" href="/">brick wall</a></div>
 	</div>
@@ -27,6 +29,13 @@ import glasses from "./glasses.png";
 	button.addEventListener("click", () => {
 		button.ariaExpanded = `${button.ariaExpanded !== "true"}`;
 	});
+
+	document.querySelector("nav .logo")!.addEventListener("click", (event) => {
+		if (matchMedia("(width < 900px)").matches) {
+			event.preventDefault();
+			button.click();
+		}
+	});
 </script>
 
 <style>
@@ -44,8 +53,8 @@ import glasses from "./glasses.png";
 		grid-template-columns: 1fr;
 		overflow-x: clip;
 		transition:
-			grid-template-columns 0.3s ease-in-out,
-			visibility 0.3s;
+			grid-template-columns 0.25s ease-in-out,
+			visibility 0.25s;
 	}
 
 	.slot > div {
@@ -95,6 +104,7 @@ import glasses from "./glasses.png";
 		display: block;
 		height: 75px;
 		width: auto;
+		will-change: transform;
 		transition: scale 0.2s;
 		filter:
 			drop-shadow(2px 0 0 black)
@@ -146,9 +156,16 @@ import glasses from "./glasses.png";
 		}
 
 		.links a {
+			position: relative;
 			margin-left: calc(var(--half) + 1rem);
-			overflow: clip;
-			overflow-clip-margin: 0.05em;
+			pointer-events: none;
+		}
+
+		.links a::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: auto;
 		}
 
 		img {

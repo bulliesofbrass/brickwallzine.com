@@ -1,23 +1,28 @@
 ---
-import { Body } from "#lib/elements";
-import { Background } from "#lib/components";
-import { Navigation } from "#lib/components";
-import { IMG_0751 } from "#lib/assets/index";
+import { Body, Article, Image } from "#lib/elements";
+import { Background, Navigation } from "#lib/components";
+import { aura_png } from "#lib/assets";
 
 const SITE_TITLE = "CONTACT | BRICK WALL ZINE";
 const SITE_DESCRIPTION = "";
 ---
 
 <Body title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<header>
-		<Background image={IMG_0751} />
-		<Navigation />
-	</header>
+	<div class="page">
+		<Background image={aura_png} repeat />
 
-	<main>
+		<header>
+			<Navigation />
+		</header>
 
-	</main>
+		<main>
+		</main>
+	</div>
 </Body>
 
 <style>
+	.page {
+		position: relative;
+		min-height: 100svh;
+	}
 </style>

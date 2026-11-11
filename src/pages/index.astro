@@ -125,6 +125,7 @@ const SITE_DESCRIPTION = "";
 		display: block;
 		height: 75px;
 		width: auto;
+		will-change: transform;
 		transition: scale 0.2s;
 		filter:
 			drop-shadow(2px 0 0 black)
@@ -161,6 +162,16 @@ const SITE_DESCRIPTION = "";
 			overflow: visible clip;
 		}
 
+		.slot:not(.social) {
+			padding-top: 0.5em;
+			margin-top: -0.5em;
+		}
+
+		.slot.social {
+			padding-bottom: 0.5em;
+			margin-bottom: -0.5em;
+		}
+
 		.slot > div {
 			display: grid;
 			justify-items: center;
@@ -180,6 +191,18 @@ const SITE_DESCRIPTION = "";
 
 		nav:has([aria-expanded="true"]) button {
 			margin: 0 0 -50px;
+		}
+
+		.slot a {
+			position: relative;
+			pointer-events: none;
+		}
+
+		.slot a::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: auto;
 		}
 
 		.slot:not(.social) a:last-child {
