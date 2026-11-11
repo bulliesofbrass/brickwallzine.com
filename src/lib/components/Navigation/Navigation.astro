@@ -1,13 +1,19 @@
 ---
 import bag from "./bag.png";
 import glasses from "./glasses.png";
+import logo from "./logo.svg";
 ---
 
 <nav
 	style={`--bag-half: ${(37.5 * bag.width) / bag.height}px; --glasses-half: ${(72.5 * glasses.width) / glasses.height}px`}
 >
 	<div class="slot">
-		<div><a class="logo" href="/">brick wall</a></div>
+		<div>
+			<a class="logo" href="/">
+				<span>brick wall</span>
+				<img alt="brick wall" src={logo.src} />
+			</a>
+		</div>
 	</div>
 	<button type="button" aria-label="Toggle menu" aria-expanded="false">
 		<picture>
@@ -144,6 +150,12 @@ import glasses from "./glasses.png";
 		text-decoration: none;
 	}
 
+	.logo img {
+		display: none;
+		height: 100px;
+		filter: none;
+	}
+
 	@media (width < 900px) {
 		nav {
 			--half: var(--glasses-half);
@@ -172,9 +184,12 @@ import glasses from "./glasses.png";
 			height: 145px;
 		}
 
-		.logo {
-			width: min-content;
-			white-space: normal;
+		.logo span {
+			display: none;
+		}
+
+		.logo img {
+			display: block;
 		}
 	}
 
