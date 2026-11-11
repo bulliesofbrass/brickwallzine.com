@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 import { formatDate } from "#lib";
-import { Body } from "#lib/elements";
+import { Body, Footer } from "#lib/elements";
 import { Navigation, Background, BlogPostCard } from "#lib/components";
 
 import { aura_png } from "#lib/assets";
@@ -73,6 +73,8 @@ const secondary = rest.slice(0, 4);
 			))}
 		</div>
 	</main>
+
+	<Footer />
 </Body>
 
 <style>
