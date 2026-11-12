@@ -1,0 +1,64 @@
+---
+import { aura_png } from "#lib/assets";
+---
+
+<div class="loader" style={{ "--image": `url("${aura_png.src}")` }} aria-hidden="true"></div>
+
+<noscript>
+	<style>
+		.loader {
+			display: none;
+		}
+	</style>
+</noscript>
+
+<script>
+	const loader = document.querySelector<HTMLElement>(".loader")!;
+
+	const windowLoaded = new Promise<void>((resolve) => {
+		if (document.readyState === "complete") {
+			resolve();
+		} else {
+			window.addEventListener("load", () => resolve(), { once: true });
+		}
+	});
+
+	function inViewport(element: Element) {
+		const rect = element.getBoundingClientRect();
+		return rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth;
+	}
+
+	async function imagesLoaded() {
+		const images = [...document.images].filter((image) => image.loading !== "lazy" || inViewport(image));
+		await Promise.all(images.map((image) => image.decode().catch(() => {})));
+	}
+
+	windowLoaded
+		.then(() => document.fonts.ready)
+		.then(imagesLoaded)
+		.then(() => {
+			requestAnimationFrame(() => {
+				loader.classList.add("hidden");
+				loader.addEventListener("transitionend", () => loader.remove(), { once: true });
+			});
+		});
+</script>
+
+<style>
+	.loader {
+		position: fixed;
+		inset: 0;
+		z-index: 2147483647;
+		background: #FFC88A var(--image) center / cover no-repeat;
+		transition: opacity 0.6s ease;
+	}
+
+	.loader.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	:global(html:has(.loader:not(.hidden))) {
+		overflow: hidden;
+	}
+</style>

@@ -2,6 +2,7 @@
 import type { ImageMetadata } from 'astro';
 
 import { HTML, Head } from "#lib/elements";
+import Loader from "#lib/components/Loader/Loader.astro";
 
 import IMG_0751 from "./IMG_0751.jpeg";
 
@@ -9,15 +10,17 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	loader?: boolean;
 }
 
-const { title, description, image = IMG_0751 } = Astro.props;
+const { title, description, image = IMG_0751, loader = true } = Astro.props;
 ---
 
 <HTML>
 	<Head title={title} description={description} image={image} />
 
     <body>
+		{loader && <Loader />}
 		<slot />
     </body>
 </HTML>
