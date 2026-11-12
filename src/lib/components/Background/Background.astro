@@ -5,9 +5,10 @@ interface Props {
 	image: ImageMetadata;
 	repeat?: boolean;
 	opacity?: number;
+	priority?: boolean;
 }
 
-const { image, repeat = false, opacity } = Astro.props;
+const { image, repeat = false, opacity, priority = false } = Astro.props;
 const ratio = image.height / image.width;
 ---
 
@@ -17,8 +18,8 @@ const ratio = image.height / image.width;
 	data-ratio={ratio}
 	aria-hidden="true"
 >
-	<Image src={image} />
-	{repeat && <Image src={image} class="flipped" />}
+	<Image src={image} width={image.width} sizes="100vw" priority={priority} />
+	{repeat && <Image src={image} width={image.width} sizes="100vw" class="flipped" />}
 </div>
 
 <script>

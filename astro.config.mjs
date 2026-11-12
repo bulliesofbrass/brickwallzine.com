@@ -27,18 +27,7 @@ export default defineConfig({
 		},
 
 		{
-			provider: fontProviders.fontsource(), name: "Babylonica", cssVariable: "--font-babylonica",
-			weights: [400], styles: ["normal"], fallbacks: ["cursive"]
-		},
-
-
-		{
 			provider: fontProviders.fontsource(), name: "Blackout Two AM", cssVariable: "--font-blackout-two-am",
-			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
-		},
-
-		{
-			provider: fontProviders.fontsource(), name: "Rubik Distressed", cssVariable: "--font-rubik-distressed",
 			weights: [400], styles: ["normal"], fallbacks: ["sans-serif"]
 		},
 	]

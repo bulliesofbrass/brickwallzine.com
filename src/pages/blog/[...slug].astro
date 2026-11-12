@@ -25,7 +25,7 @@ const { Content } = await render(post);
 
 	<main>
 		<Article>
-			{post.data.heroImage && <Image src={post.data.heroImage} alt="" style={{ aspectRatio: "16 / 9", objectFit: "cover" }} />}
+			{post.data.heroImage && <Image src={post.data.heroImage} alt="" style={{ aspectRatio: "16 / 9", objectFit: "cover" }} priority />}
 			<h2 class="date">{formatDate(post.data.datePublished)}</h2>
 			<h1>{post.data.title}</h1>
 			<h2 class="date">{post.data.authors}</h2>

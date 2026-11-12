@@ -6,6 +6,9 @@ interface Props {
 	style?: astroHTML.JSX.HTMLAttributes['style'];
 	alt?: string;
 	src: ImageMetadata;
+	width?: number;
+	sizes?: string;
+	priority?: boolean;
 }
 
 const {
@@ -13,6 +16,9 @@ const {
 	style,
 	alt = "",
 	src,
+	width = 700,
+	sizes,
+	priority = false,
 	...rest
 } = Astro.props;
 ---
@@ -22,6 +28,9 @@ const {
 	style={style}
 	alt={alt}
 	src={src}
+	width={Math.min(width, src.width)}
+	sizes={sizes}
+	priority={priority}
 	layout="constrained"
 	formats={["webp"]}
 	{...rest}

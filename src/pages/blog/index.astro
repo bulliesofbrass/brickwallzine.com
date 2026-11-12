@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 import { formatDate } from "#lib";
-import { Body, Footer } from "#lib/elements";
+import { Body, Footer, Image } from "#lib/elements";
 import { Navigation, Background, BlogPostCard } from "#lib/components";
 
 import { aura_png } from "#lib/assets";
@@ -31,7 +31,7 @@ const secondary = rest.slice(0, 4);
 				<a class="featured" href={`/blog/${featured.id}/`}>
 					<div class="hero image">
 						<div class="iimage">
-							<img src={featured.data.heroImage.src} alt="" />
+							<Image src={featured.data.heroImage} width={1000} priority />
 						</div>
 					</div>
 
@@ -47,7 +47,7 @@ const secondary = rest.slice(0, 4);
 					<div class="card">
 						<a href={`/blog/${post.id}`}>
 							<div class="image">
-								<img src={post.data.heroImage.src} />
+								<Image src={post.data.heroImage} width={340} />
 							</div>
 
 							<div class="text">
